@@ -1,0 +1,115 @@
+.main-container {
+    height: 100vh;
+    width: 100%;
+    background-color: var(--clr-oxfordBlue);
+}
+
+.main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 90%;
+    gap: 50px;
+    padding: 50px;
+}
+
+.left-main,
+.right-main {
+    border: none;
+}
+
+.left-main {
+    display: grid;
+    place-items: center;
+}
+
+form h4,
+form p {
+    text-align: center;
+    margin-top: 25px;
+}
+
+form p Link:visited {
+    text-decoration: none;
+    color: var(--clr-blueMunsell);
+}
+
+form p {
+    padding-bottom: 5px;
+    opacity: 0.7;
+}
+
+form p:hover {
+    font-size: 1.15rem;
+    cursor: pointer;
+    border-bottom: var(--clr-crimson) 1px solid;
+    opacity: 1;
+    transition: 0.3s;
+}
+
+.link-wrapper {
+    display: grid;
+    place-items: center;
+}
+
+.link-wrapper h2 {
+    color: var(--clr-blueMunsell);
+    font-size: 4rem;
+    font-family: 'Playfair';
+}
+
+.link-wrapper h2:hover {
+    border-bottom: 1px solid var(--clr-crimson);
+    cursor: pointer;
+}
+
+.right-main {
+    position: relative;
+}
+
+.square-dash {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: repeating-linear-gradient(
+        45deg,
+        var(--clr-crimson),
+        var(--clr-crimson) 5px,
+        var(--clr-oxfordBlue) 3px,
+        var(--clr-oxfordBlue) 16px
+    );
+    left: 300px;
+    top: 230px;
+}
+
+.rectangle {
+    position: absolute;
+    left: 150px;
+    top: 90px;
+    background-color: var(--clr-dodgerBlue);
+    width: 300px;
+    height: 200px;
+}
+
+.square {
+    position:absolute;
+    width: 400px;
+    height: 400px;
+    background-color: var(--clr-blueMunsell);
+    top: 150px;
+    left: 100px;
+    text-align: center;
+    font-size: 22rem;
+    color: var(--clr-oxfordBlue);
+    font-family: 'Playfair';
+    box-shadow: 10px 0px 20px 1px rgba(0, 0, 0, 0.452);
+    border-radius: 2px;
+}
+
+.border {
+    position: absolute;
+    width: 355px;
+    height: 300px;
+    border: solid 10px var(--clr-dodgerBlue);
+    top: 360px;
+    left: 200px;
+}

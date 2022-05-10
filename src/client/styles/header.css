@@ -1,0 +1,19 @@
+
+.header {
+    height: 75px;
+    background-color: var(--clr-oxfordBlue);
+    border-bottom: 0.005rem solid var(--clr-blueMunsell);
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.logo {
+    font-size: 3.5rem;
+    padding-left: 20px;
+    color: var(--clr-blueMunsell);
+    font-family: 'Playfair';
+}
+
+.z {
+    color: var(--clr-crimson);
+}

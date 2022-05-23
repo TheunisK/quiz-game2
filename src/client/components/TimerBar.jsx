@@ -1,10 +1,24 @@
-
+import '../styles/quizPage.css';
    
 import { React, useState, useEffect } from 'react';
-import { Line } from 'rc-progress';
 
 
 function TimerBar(props) {
+
+    const containerStyles = {
+      width: '94%',
+      height: '20px',
+      border: '1px solid var(--clr-blueMunsell)',
+      borderRadius: '20px'
+    }
+
+    const progressStyles = {
+      width: '0%',
+      height: '100%',
+      backgroundColor: 'var(--clr-dodgerBlue)',
+      borderRadius: '19px',
+      transition: '5s'
+    }
 
     const { setEndTime, setGameOver, correct, setCorrect } = props;
     
@@ -14,9 +28,6 @@ function TimerBar(props) {
       const progress = setTimeout(() => {
         setPercent(percent + 0.1);
       }, 5)
-      if (correct) {
-        setPercent(percent - 5);
-      }
       if (percent >= 100) {
         clearTimeout(progress);
         setEndTime(new Date());
@@ -26,8 +37,8 @@ function TimerBar(props) {
     }, [percent, correct]);
 
     return (
-        <div className="timer-bar-container">
-          <Line percent={percent} strokeWidth='1.5' strokeColor="#0197F6"/>
+        <div className="timer-bar-container" style={containerStyles}>
+            <div className="progress" style={progressStyles}></div>
         </div>
     );
 };

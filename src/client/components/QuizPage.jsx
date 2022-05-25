@@ -9,7 +9,7 @@ import TimerBar from './TimerBar';
 
 function QuizPage(props) {
     
-    const { category, questions, startTime } = props;
+    const { category, questions, startTime, running, setRunning } = props;
 
     const firstIndex = 0;
 
@@ -25,6 +25,7 @@ function QuizPage(props) {
     const [endTime, setEndTime] = useState(null);
     const [gameOver, setGameOver] = useState(false);
     const [correct, setCorrect] = useState(false);
+    const [progress, setProgress] = useState(0);
 
     const shuffleAnswers = (answers) => {
         return answers.sort((a, b) => 0.5 - Math.random());
@@ -62,7 +63,7 @@ function QuizPage(props) {
         const userAnswer = e.target.value.slice(3);
         const realAnswer = questions[currentQuestionIndex].correctAnswer;
         if (userAnswer === realAnswer) {
-            setCorrect(true);
+            setProgress((prev) => prev - 10)
             setCurrentQuestionIndex(currentQuestionIndex + 1);
             setQuizDetails({
                 ...quizDetails, streak: quizDetails.streak + 1
@@ -74,7 +75,7 @@ function QuizPage(props) {
         <div className="main-container" >
             <Header />
             <div className="quiz-main">
-                <TimerBar setEndTime={setEndTime} setGameOver={setGameOver} correct={correct} setCorrect={setCorrect}/>
+                <TimerBar progress={progress} setProgress={setProgress} setRunning={setRunning} running={running} />
                 <div className='question'>
                     {questions[currentQuestionIndex] && <h2>{questions[currentQuestionIndex].question}</h2>}
                 </div>

@@ -15,14 +15,15 @@ function App() {
   const [questions, setQuestions] = useState([]);
   const [category, setCategory] = useState(initialCategory);
   const [startTime, setStartTime] = useState(null);
+  const [running, setRunning] = useState(false);
 
   return (
     <div className="App">
       <Routes>
         <Route path='/' element={<LandingPage />}/>
         <Route path='/register' element={<Register />}/>
-        <Route path='/quiz' element={<QuizPage category={category} questions={questions} startTime={startTime}/>}/>
-        <Route path='/getready' element={<GetReady category={category} setQuestions={setQuestions} setStartTime={setStartTime}/>}/>
+        <Route path='/quiz' element={<QuizPage running={running} setRunning={setRunning} category={category} questions={questions} startTime={startTime}/>}/>
+        <Route path='/getready' element={<GetReady setRunning={setRunning} category={category} setQuestions={setQuestions} setStartTime={setStartTime}/>}/>
         <Route path='/setup' element={<Setup setCategory={setCategory}/>}/>
       </Routes>
     </div>

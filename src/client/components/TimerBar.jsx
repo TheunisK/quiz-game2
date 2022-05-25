@@ -1,46 +1,47 @@
 import '../styles/quizPage.css';
+import '../styles/timerStyles.css';
    
 import { React, useState, useEffect } from 'react';
+import ProgressBar from "./ProgressBar";
 
+let interval = undefined;
 
 function TimerBar(props) {
+  const { progress, setProgress, running, setRunning } = props;
 
-    const containerStyles = {
-      width: '94%',
-      height: '20px',
-      border: '1px solid var(--clr-blueMunsell)',
-      borderRadius: '20px'
+  useEffect(() => {
+    if (running) {
+      interval = setInterval(() => {
+        setProgress((prev) => prev + 0.1);
+      }, 10);
+    } else {
+      clearInterval(interval);
     }
+  }, [running]);
 
-    const progressStyles = {
-      width: '0%',
-      height: '100%',
-      backgroundColor: 'var(--clr-dodgerBlue)',
-      borderRadius: '19px',
-      transition: '5s'
+  useEffect(() => {
+    if (progress >= 100) {
+      setRunning(false);
+      clearInterval(interval);
     }
+  }, [progress]);
 
-    const { setEndTime, setGameOver, correct, setCorrect } = props;
-    
-    const [percent, setPercent] = useState(0);
-
-    useEffect(() => {
-      const progress = setTimeout(() => {
-        setPercent(percent + 0.1);
-      }, 5)
-      if (percent >= 100) {
-        clearTimeout(progress);
-        setEndTime(new Date());
-        setGameOver(true);
-      }
-      setCorrect(false);
-    }, [percent, correct]);
-
-    return (
-        <div className="timer-bar-container" style={containerStyles}>
-            <div className="progress" style={progressStyles}></div>
-        </div>
-    );
-};
+  return (
+    <div className="App">
+      <ProgressBar progress={progress} />
+      {/* <button
+        onClick={() => {
+          setRunning(false);
+          setProgress(0);
+        }}
+      >
+        Clear
+      </button>
+      <button onClick={() => setRunning(!running)}>
+        {running ? "Stop" : "Start"}
+      </button> */}
+    </div>
+  );
+}
 
 export default TimerBar;

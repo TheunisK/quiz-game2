@@ -6,7 +6,7 @@ import Header from "./Header";
 import '../styles/getReady.css';
 
 function GetReady(props) {
-    const { category, setQuestions, setStartTime } = props;
+    const { category, setQuestions, setStartTime, setRunning } = props;
 
     const url = `https://the-trivia-api.com/questions?categories=${category}&limit=20`;
 
@@ -34,6 +34,7 @@ function GetReady(props) {
             setStartTime(new Date());
             clearTimeout(time);
             navigate('/quiz');
+            setRunning(true);
         }
     }, [timeLeft]);
 
